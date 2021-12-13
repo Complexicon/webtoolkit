@@ -96,6 +96,7 @@ function log(prefix, ...message) {
 }
 
 log.build = function (prefix) {
+	prefix = prefix || require('path').basename(log.build.caller.arguments[3]);
 	function info(...message) { log([...(Array.isArray(prefix) ? prefix : [prefix]), '{cyan info}'], ...message) };
 	function warn(...message) { log([...(Array.isArray(prefix) ? prefix : [prefix]), '{yellow warn}'], ...message) };
 	function error(...message) { log([...(Array.isArray(prefix) ? prefix : [prefix]), '{red error}'], ...message) };
